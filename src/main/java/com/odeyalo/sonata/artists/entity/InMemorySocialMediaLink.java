@@ -15,8 +15,12 @@ public class InMemorySocialMediaLink implements SocialMediaLink {
     String platform;
     URL url;
 
-    public static InMemorySocialMediaLink of(String platform, String url) throws MalformedURLException {
-        return of(platform, new URL(url));
+    public static InMemorySocialMediaLink of(String platform, String url) {
+        try {
+            return of(platform, new URL(url));
+        } catch (MalformedURLException ex) {
+            throw new IllegalArgumentException(String.format("The url: %s is malformed", url), ex);
+        }
     }
 
     @Override
