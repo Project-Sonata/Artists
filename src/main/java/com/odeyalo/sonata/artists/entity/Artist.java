@@ -4,7 +4,6 @@ import java.util.List;
 
 /**
  * Represent the Artist entity in Sonata Project.
- * The artist entity is directly associated with user account.
  */
 public interface Artist {
     /**
@@ -25,6 +24,7 @@ public interface Artist {
 
     /**
      * User associated with the artist page
+     * The user ID can be null when music distributor created this artist
      * @return - user id associated with artist
      */
     String getUserId();
