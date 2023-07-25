@@ -6,7 +6,7 @@ import java.util.Iterator;
 /**
  * Represent the list that used only for reading
  */
-public interface ReadOnlyCollection<E> {
+public interface ReadOnlyCollection<E> extends Iterable<E> {
     int size();
 
     boolean isEmpty();
