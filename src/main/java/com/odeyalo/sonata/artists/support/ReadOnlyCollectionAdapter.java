@@ -9,6 +9,9 @@ public class ReadOnlyCollectionAdapter<E> implements ReadOnlyCollection<E> {
     private final List<E> parent;
 
     public ReadOnlyCollectionAdapter(Collection<E> parent) {
+        if (parent == null) {
+            parent = new ArrayList<>();
+        }
         this.parent = new ArrayList<>(parent);
     }
 

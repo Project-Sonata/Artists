@@ -2,19 +2,23 @@ package com.odeyalo.sonata.artists.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
+import java.util.List;
 
 @Data
-@AllArgsConstructor
+@AllArgsConstructor(staticName = "of")
 @NoArgsConstructor
-public class BecomeArtistDto {
+@Builder
+public class ArtistMetadataDto {
+    @JsonProperty("user_id")
+    String userId;
     @JsonProperty("artist_name")
-    private String artistName;
+    String artistName;
     @JsonProperty("genres")
-    private Set<String> genres;
+    List<String> genres;
     @JsonProperty("social_medias")
-    private Set<SocialMediaDto> socialMedias;
+    List<SocialMediaDto> socialMedia;
 }

@@ -44,12 +44,32 @@ public interface AwaitingVerificationArtist {
     interface VerificationStatus {
         // When this status was triggered
         long getStatusTime();
+
+        RegistrationVerificationStatus asEnum();
     }
     class PendingStatus implements VerificationStatus {
 
         @Override
         public long getStatusTime() {
             return System.currentTimeMillis();
+        }
+
+        @Override
+        public RegistrationVerificationStatus asEnum() {
+            return RegistrationVerificationStatus.PENDING;
+        }
+    }
+
+    class InProgress implements VerificationStatus {
+
+        @Override
+        public long getStatusTime() {
+            return System.currentTimeMillis();
+        }
+
+        @Override
+        public RegistrationVerificationStatus asEnum() {
+            return RegistrationVerificationStatus.IN_PROGRESS;
         }
     }
 
@@ -61,6 +81,11 @@ public interface AwaitingVerificationArtist {
         public long getStatusTime() {
             return System.currentTimeMillis();
         }
+
+        @Override
+        public RegistrationVerificationStatus asEnum() {
+            return RegistrationVerificationStatus.COMPLETED;
+        }
     }
 
     class FailedStatus implements VerificationStatus {
@@ -68,6 +93,11 @@ public interface AwaitingVerificationArtist {
         @Override
         public long getStatusTime() {
             return System.currentTimeMillis();
+        }
+
+        @Override
+        public RegistrationVerificationStatus asEnum() {
+            return RegistrationVerificationStatus.FAILED;
         }
     }
 }
