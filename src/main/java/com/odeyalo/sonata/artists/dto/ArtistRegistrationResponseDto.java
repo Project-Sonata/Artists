@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor(staticName = "of")
 public class ArtistRegistrationResponseDto {
-    String type;
+    private String type;
     @JsonProperty("tracking")
-    Tracking tracking;
+    private Tracking tracking;
 
     public static final String PENDING_TYPE = "pending";
 

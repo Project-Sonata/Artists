@@ -1,0 +1,21 @@
+{
+  "request" : {
+    "url" : "/token/info",
+    "method" : "POST",
+    "headers" : {
+      "Content-Type" : {
+        "matches" : "application/json"
+      }
+    },
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$[?(@.['token'] == 'failed_status_access_token')]"
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"valid\":true,\"user_id\":\"failed\",\"scope\":\"user-account-modify write\",\"iat\":941640270,\"expires_in\":946541940}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    }
+  }
+}

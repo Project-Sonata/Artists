@@ -64,6 +64,7 @@ public class StandaloneArtistRegistrationServiceImpl implements StandaloneArtist
         return AwaitingVerificationArtist.ArtistMetadata.builder()
                 .userId(artistPayload.getUser().getDetails().getId())
                 .artistName(artistPayload.getArtistName())
+                .genres(createInMemoryGenres(artistPayload))
                 .socialMedia(links)
                 .build();
     }
@@ -77,6 +78,11 @@ public class StandaloneArtistRegistrationServiceImpl implements StandaloneArtist
         );
     }
 
+    private List<String> createInMemoryGenres(StandaloneArtistRegistrationPayload artistPayload) {
+        ReadOnlyCollection<String> mediaContainer = artistPayload.getGenres();
+        return StreamSupport.stream(mediaContainer.spliterator(), false)
+                .toList();
+    }
     private List<InMemorySocialMediaLink> createInMemoryMediaLinks(StandaloneArtistRegistrationPayload artistPayload) {
         ReadOnlyCollection<SocialMedia> mediaContainer = artistPayload.getMediaContainer();
         return StreamSupport.stream(mediaContainer.spliterator(), false)

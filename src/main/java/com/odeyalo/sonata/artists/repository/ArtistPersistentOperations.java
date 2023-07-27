@@ -7,7 +7,7 @@ import reactor.core.publisher.Mono;
  * Operations that can be done only for artist entity
  * @param <T> - artist
  */
-public interface ArtistPersistentOperations<T extends Artist> extends BasicPersistentOperations<T, String> {
+public interface ArtistPersistentOperations<T extends Artist> extends BasicPersistentOperations<T, Long> {
 
     Mono<T> findArtistByPublicId(String publicId);
 
